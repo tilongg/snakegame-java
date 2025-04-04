@@ -13,7 +13,7 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
         }
     }
 
-    int boardWidth, boardHeight, tileSize = 25;
+    int boardWidth, boardHeight, tileSize = 30;
 
     Tile snakeHead;
     ArrayList<Tile> snakeBody;
@@ -26,9 +26,12 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
     boolean gameOver = false;
     boolean isPaused = false;
 
+    int ogSpeed = 150;
     int score = 0;
     int highScore = 0;
-    int speed = 150;
+    int speed = ogSpeed;
+
+
 
     SnakeGame(int boardWidth, int boardHeight) {
         this.boardWidth = boardWidth;
@@ -54,7 +57,7 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
         gameOver = false;
         isPaused = false;
         score = 0;
-        speed = 150;
+        speed = ogSpeed;
 
         gameLoop = new Timer(speed, this);
         gameLoop.start();
@@ -104,6 +107,7 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
         g.setFont(new Font("Arial", Font.BOLD, 16));
         g.drawString("Score: " + score, boardWidth / 2 - 50, 20);
         g.drawString("High Score: " + highScore, boardWidth / 2 - 50, 40);
+        g.drawString("Snake Speed: " + (ogSpeed - speed), boardWidth / 2 - 50, 60);
     }
 
     public void placeFood() {
@@ -167,7 +171,7 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
         score++;
         if (score > highScore) highScore = score;
 
-        if (score % 5 == 0 && speed > 50) {
+        if (score % 5 == 0 && speed > 20) {
             speed -= 10;
             gameLoop.setDelay(speed);
         }
