@@ -34,7 +34,7 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         setPreferredSize(new Dimension(this.boardWidth, this.boardHeight));
-        setBackground(Color.darkGray);
+        setBackground(Color.black);
         addKeyListener(this);
         setFocusable(true);
 
@@ -83,7 +83,7 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
             return;
         }
 
-        g.setColor(Color.gray);
+        g.setColor(Color.darkGray);
         for (int i = 0; i < boardWidth / tileSize; i++) {
             g.drawLine(i * tileSize, 0, i * tileSize, boardHeight);
             g.drawLine(0, i * tileSize, boardWidth, i * tileSize);
@@ -92,10 +92,10 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
         g.setColor(Color.red);
         g.fill3DRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize, true);
 
-        g.setColor(Color.blue);
+        g.setColor(Color.green);
         g.fill3DRect(snakeHead.x * tileSize, snakeHead.y * tileSize, tileSize, tileSize, true);
 
-        g.setColor(Color.cyan);
+        g.setColor(Color.green);
         for (Tile snakePart : snakeBody) {
             g.fill3DRect(snakePart.x * tileSize, snakePart.y * tileSize, tileSize, tileSize, true);
         }
